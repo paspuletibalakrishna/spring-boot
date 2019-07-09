@@ -14,22 +14,29 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Mkyong.com</a>
+    <a class="navbar-brand" href="#">Balakrishna Paspuleti</a>
 </nav>
 
 <main role="main" class="container">
-
     <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
-        <h2>
-            <span th:text="'Hello, ' + ${message}"></span>
-        </h2>
+        <h1>Spring Boot Web Thymeleaf Date Range Example</h1>
     </div>
 
-    <ol>
-        <li th:each="task : ${tasks}" th:text="${task}"></li>
-    </ol>
-
+    <form th:action="@{/dateRange}" th:object="${dateContainer}" method="post">
+	    <ul>
+		    <li th:each="err : ${#fields.errors('all')}" th:text="${err}" />
+		</ul>
+        <span th:text="${message}"> </span> <br/> <br/>
+        <div class="form-row">
+   	      <div class="form-group col-md-3">
+           <label>Start Date: </label><input type="date" class="form-control"  th:field="*{startDate}"/> <br/> <br/>
+        </div>
+        <div class="form-group col-md-3">
+        <label>End Date: </label><input class="form-control" type="date" th:field="*{endDate}"/> <br /> 
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
 </main>
 <!-- /.container -->
 
